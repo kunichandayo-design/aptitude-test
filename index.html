@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>内科・訪問診療クリニック 採用適性テスト</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-dark: #1B4F7A;
+    --blue-mid: #2E75B6;
+    --blue-light: #D5E8F4;
+    --blue-pale: #EBF3FB;
+    --green: #1E5E3A;
+    --green-light: #E8F5E9;
+    --red: #B71C1C;
+    --red-light: #FFEBEE;
+    --orange: #E65100;
+    --orange-light: #FFF3E0;
+    --purple: #4A148C;
+    --purple-light: #EDE7F6;
+    --gray: #444;
+    --gray-light: #f5f5f5;
+    --gray-border: #ddd;
+    --white: #fff;
+    --cat-a: #2E75B6;
+    --cat-b: #7030A0;
+    --cat-c: #E65100;
+    --cat-d: #1E5E3A;
+    --cat-e: #B71C1C;
+    --cat-r: #888;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 4px 24px rgba(0,0,0,0.12);
+    --radius: 12px;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #f0f4f8;
+    color: var(--gray);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: var(--blue-dark);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-title { color: #fff; font-size: 16px; font-weight: 700; letter-spacing: 0.03em; }
+  .header-sub { color: rgba(255,255,255,0.65); font-size: 12px; margin-top: 2px; }
+  .progress-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .progress-label { color: rgba(255,255,255,0.75); font-size: 12px; }
+  .progress-bar-bg { width: 160px; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; }
+  .progress-bar { height: 100%; background: #64B5F6; border-radius: 3px; transition: width 0.4s ease; }
+
+  /* ── Main Layout ── */
+  .main { max-width: 860px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  /* ── Card ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px 36px;
+    margin-bottom: 24px;
+  }
+
+  /* ── Start Screen ── */
+  .start-screen { text-align: center; padding: 48px 36px; }
+  .start-icon { font-size: 48px; margin-bottom: 16px; }
+  .start-title { font-family: 'Noto Serif JP', serif; font-size: 28px; color: var(--blue-dark); margin-bottom: 8px; }
+  .start-subtitle { color: #666; font-size: 15px; margin-bottom: 32px; }
+  .start-meta { display: flex; justify-content: center; gap: 32px; margin-bottom: 32px; }
+  .meta-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .meta-icon { font-size: 22px; }
+  .meta-label { font-size: 12px; color: #888; }
+  .meta-value { font-size: 14px; font-weight: 700; color: var(--blue-dark); }
+  .info-box {
+    background: var(--blue-pale);
+    border-left: 4px solid var(--blue-mid);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: var(--blue-dark);
+    line-height: 1.8;
+  }
+
+  /* ── Form fields ── */
+  .form-row { margin-bottom: 16px; text-align: left; }
+  .form-row label { display: block; font-size: 13px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
+  .form-row input, .form-row select {
+    width: 100%; padding: 10px 14px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: 8px;
+    font-family: inherit; font-size: 14px;
+    color: var(--gray);
+    transition: border-color 0.2s;
+    background: var(--white);
+  }
+  .form-row input:focus, .form-row select:focus {
+    outline: none; border-color: var(--blue-mid);
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── Section Header ── */
+  .section-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-badge {
+    flex-shrink: 0;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700; color: #fff;
+  }
+  .section-info { flex: 1; }
+  .section-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .section-desc { font-size: 13px; color: #888; }
+  .section-progress { font-size: 12px; color: #aaa; margin-top: 2px; }
+
+  /* ── Question ── */
+  .question-block { margin-bottom: 20px; }
+  .question-num { font-size: 11px; font-weight: 700; color: #aaa; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .question-text { font-size: 15px; color: var(--gray); margin-bottom: 14px; line-height: 1.65; }
+
+  .scale-row {
+    display: flex; align-items: stretch; gap: 0;
+    border: 1.5px solid var(--gray-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .scale-option { flex: 1; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+  .scale-option input[type="radio"] { display: none; }
+  .scale-label {
+    width: 100%; padding: 12px 4px;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    transition: background 0.15s, color 0.15s;
+    border-right: 1px solid var(--gray-border);
+    text-align: center;
+  }
+  .scale-option:last-child .scale-label { border-right: none; }
+  .scale-num { font-size: 18px; font-weight: 700; color: #bbb; transition: color 0.15s; }
+  .scale-text { font-size: 10px; color: #bbb; line-height: 1.3; transition: color 0.15s; }
+  .scale-option input:checked + .scale-label { background: var(--active-color, var(--blue-pale)); }
+  .scale-option input:checked + .scale-label .scale-num { color: var(--active-text, var(--blue-dark)); }
+  .scale-option input:checked + .scale-label .scale-text { color: var(--active-text, var(--blue-mid)); }
+  .scale-option:hover .scale-label { background: var(--gray-light); }
+  .scale-option input:checked + .scale-label .scale-num { font-weight: 900; }
+
+  .q-divider { height: 1px; background: #f0f0f0; margin: 16px 0; }
+
+  /* ── Reverse item warning ── */
+  .reverse-badge {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    background: #FFF9C4; color: #795548;
+    padding: 2px 8px; border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* ── Navigation ── */
+  .nav-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 28px; padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .btn {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: inherit; font-size: 14px; font-weight: 700;
+    cursor: pointer; border: none; transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary { background: var(--blue-dark); color: #fff; }
+  .btn-primary:hover { background: var(--blue-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(27,79,122,0.3); }
+  .btn-secondary { background: var(--white); color: var(--gray); border: 1.5px solid var(--gray-border); }
+  .btn-secondary:hover { background: var(--gray-light); }
+  .btn-large { padding: 16px 48px; font-size: 16px; border-radius: 10px; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+  .unanswered-msg { font-size: 12px; color: #e53935; font-weight: 700; }
+
+  /* ── Results ── */
+  .result-header {
+    text-align: center; padding: 40px 36px 32px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 28px;
+  }
+  .result-name { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
+  .result-date { font-size: 13px; color: #aaa; }
+  .result-total { margin: 20px 0; }
+  .total-score { font-size: 56px; font-weight: 700; color: var(--blue-dark); line-height: 1; }
+  .total-max { font-size: 18px; color: #aaa; }
+  .total-label { font-size: 13px; color: #888; margin-top: 4px; }
+
+  .grade-badge {
+    display: inline-block;
+    padding: 8px 32px;
+    border-radius: 100px;
+    font-size: 28px; font-weight: 700;
+    margin: 12px 0;
+  }
+
+  .cat-scores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+  .cat-card {
+    background: var(--gray-light);
+    border-radius: 10px; padding: 16px 12px;
+    text-align: center; position: relative;
+  }
+  .cat-card-label { font-size: 11px; font-weight: 700; color: #888; margin-bottom: 4px; letter-spacing: 0.05em; }
+  .cat-card-score { font-size: 28px; font-weight: 700; line-height: 1; }
+  .cat-card-max { font-size: 12px; color: #aaa; }
+  .cat-card-bar { height: 4px; border-radius: 2px; margin-top: 8px; background: #e0e0e0; overflow: hidden; }
+  .cat-card-fill { height: 100%; border-radius: 2px; transition: width 0.8s ease; }
+  .cat-card-warn { position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background: #f44336; border-radius: 50%; }
+
+  .reverse-result {
+    background: #FFF9C4; border: 1.5px solid #F9A825;
+    border-radius: 10px; padding: 16px 20px; margin-bottom: 20px;
+  }
+  .reverse-title { font-weight: 700; font-size: 14px; color: #6D4C41; margin-bottom: 8px; }
+  .reverse-items { font-size: 13px; color: #795548; line-height: 1.8; }
+
+  .result-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .result-table th {
+    background: var(--blue-dark); color: #fff;
+    padding: 10px 14px; text-align: left; font-weight: 700;
+  }
+  .result-table td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+  .result-table tr:nth-child(even) td { background: var(--gray-light); }
+  .result-table .grade-s { color: #1565C0; font-weight: 700; }
+  .result-table .grade-a { color: #2E7D32; font-weight: 700; }
+  .result-table .grade-b { color: #E65100; font-weight: 700; }
+  .result-table .grade-c { color: #C62828; font-weight: 700; }
+  .result-table .grade-d { color: #B71C1C; font-weight: 700; background: #FFEBEE; }
+
+  .alert-box {
+    border-radius: 8px; padding: 14px 18px; font-size: 14px;
+    margin-bottom: 12px; line-height: 1.7;
+  }
+  .alert-warn { background: #FFF3E0; border-left: 4px solid var(--orange); color: var(--orange); }
+  .alert-danger { background: var(--red-light); border-left: 4px solid var(--red); color: var(--red); }
+  .alert-ok { background: var(--green-light); border-left: 4px solid var(--green); color: var(--green); }
+
+  .print-btn { background: #455A64; color: #fff; }
+  .print-btn:hover { background: #37474F; }
+
+  @media print {
+    body { background: white; }
+    .site-header { position: static; }
+    .btn { display: none; }
+    .card { box-shadow: none; border: 1px solid #ddd; }
+  }
+
+  @media (max-width: 600px) {
+    .main { padding: 16px 14px 60px; }
+    .card { padding: 20px 18px; }
+    .cat-scores { grid-template-columns: repeat(2, 1fr); }
+    .form-grid { grid-template-columns: 1fr; }
+    .header-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .progress-wrap { align-items: flex-start; }
+    .progress-bar-bg { width: 100%; }
+  }
+
+  .hidden { display: none !important; }
+  .fade-in { animation: fadeIn 0.35s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <div class="header-title">内科・訪問診療クリニック 採用適性テスト</div>
+      <div class="header-sub">全30問・所要時間 約15〜20分</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label" id="progress-label">0 / 30 問</div>
+      <div class="progress-bar-bg"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- ── START ── -->
+  <div id="screen-start" class="card start-screen fade-in">
+    <div class="start-icon">📋</div>
+    <div class="start-title">採用適性テスト</div>
+    <div class="start-subtitle">内科・訪問診療クリニック</div>
+    <div class="start-meta">
+      <div class="meta-item"><div class="meta-icon">📝</div><div class="meta-label">問数</div><div class="meta-value">30問</div></div>
+      <div class="meta-item"><div class="meta-icon">⏱</div><div class="meta-label">所要時間</div><div class="meta-value">15〜20分</div></div>
+      <div class="meta-item"><div class="meta-icon">📊</div><div class="meta-label">形式</div><div class="meta-value">5段階評価</div></div>
+    </div>
+    <div class="info-box">
+      各設問をお読みいただき、ご自身の考えや行動に最も近い数字をお選びください。<br>
+      <strong>正解・不正解はありません。</strong>ありのままにお答えいただくことで、より正確な結果が得られます。<br><br>
+      1 ＝ 全くそう思わない　／　2 ＝ あまりそう思わない　／　3 ＝ どちらでもない<br>
+      4 ＝ ややそう思う　／　5 ＝ 非常にそう思う
+    </div>
+    <div style="max-width:480px;margin:0 auto 24px;">
+      <div class="form-grid">
+        <div class="form-row">
+          <label>お名前 <span style="color:#e53935">*</span></label>
+          <input type="text" id="input-name" placeholder="例：山田 太郎" />
+        </div>
+        <div class="form-row">
+          <label>応募職種 <span style="color:#e53935">*</span></label>
+          <select id="input-job">
+            <option value="">選択してください</option>
+            <option>医師</option>
+            <option>看護師</option>
+            <option>医療事務・受付</option>
+            <option>相談員・MSW</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>記入日</label>
+        <input type="date" id="input-date" />
+      </div>
+    </div>
+    <button class="btn btn-primary btn-large" onclick="startTest()">テストを開始する →</button>
+  </div>
+
+  <!-- ── QUESTIONS ── -->
+  <div id="screen-test" class="hidden"></div>
+
+  <!-- ── RESULTS ── -->
+  <div id="screen-result" class="hidden"></div>
+
+</main>
+
+<script>
+const SECTIONS = [
+  {
+    id:'A', label:'素直さ・謙虚さ・成長意欲', color:'#2E75B6', bg:'#D5E8F4',
+    desc:'フィードバックの受け入れ方や自己成長への姿勢',
+    max:30,
+    questions:[
+      '上司や先輩から指摘を受けたとき、素直に受け入れることができる',
+      '自分がミスをしたとき、すぐに報告・謝罪できる',
+      '「自分はまだ成長途中だ」という意識を常に持っている',
+      '知らないことがあったとき、「知らない」と正直に言える',
+      '仕事上の失敗や困難から多くのことを学んできた',
+      '自分のやり方にこだわりすぎず、柔軟に変えることができる',
+    ]
+  },
+  {
+    id:'B', label:'チームワーク・協調・報連相', color:'#7030A0', bg:'#EDE7F6',
+    desc:'他のスタッフや他職種との連携力・コミュニケーション姿勢',
+    max:30,
+    questions:[
+      '自分の業務が一段落したとき、困っているスタッフを自然に手伝える',
+      '報告・連絡・相談を怠らず、こまめに行っている',
+      '他職種（医師・看護師・ケアマネ等）と対等に意見を言い合える',
+      'チームの中で意見が対立したとき、冷静に話し合いで解決できる',
+      '急に別の業務を頼まれても、快く引き受けられる',
+      '自分の仕事の範囲を超えてもチームのために動ける',
+    ]
+  },
+  {
+    id:'C', label:'ストレス耐性・プレッシャー対応力', color:'#E65100', bg:'#FFF3E0',
+    desc:'多忙な場面やクレーム対応など、プレッシャー下での行動傾向',
+    max:30,
+    questions:[
+      '複数の業務が重なってもパニックにならず冷静に対処できる',
+      '忙しいとき、優先順位を考えながら仕事を進められる',
+      '患者さんや家族から強いクレームを受けても、感情的にならない',
+      '仕事上の辛い経験（患者の死など）を引きずりすぎず気持ちを切り替えられる',
+      '仕事のプレッシャーを感じても、業務の質を落とさないようにしている',
+      '自分なりのストレス発散・気持ちの切り替え方法がある',
+    ]
+  },
+  {
+    id:'D', label:'倫理観・誠実さ・ルール遵守', color:'#1E5E3A', bg:'#E8F5E9',
+    desc:'医療現場における誠実さや規範意識',
+    max:30,
+    questions:[
+      '患者さんの個人情報・プライバシーを守ることを最優先にしている',
+      '業務上のルールやマニュアルは、面倒でも守ることが大切だと思う',
+      '記録や書類に関して、「ちょっとくらいいいか」という気持ちになったことはない',
+      '職場での出来事を外部の人に話すときは、十分に配慮している',
+      '不正や不適切な行為を見たとき、見て見ぬふりができない',
+      '上司からの注意・指摘を「理不尽だ」と思ったとしても、まず従うことができる',
+    ]
+  },
+  {
+    id:'E', label:'定着意欲・理念共鳴', color:'#B71C1C', bg:'#FFEBEE',
+    desc:'訪問診療・在宅医療への想いや長期勤務への意欲',
+    max:20,
+    questions:[
+      'チームで連携して患者さんの生活の質を上げることに、強い意義を感じる',
+      '訪問診療・在宅医療の分野で長く働きたいという気持ちがある',
+      '高齢者・認知症・終末期の患者さんと関わる仕事にやりがいを感じる',
+      '患者さんの家族へのサポートや説明も、自分の仕事の一部だと思っている',
+    ]
+  },
+  {
+    id:'R', label:'自己点検', color:'#888', bg:'#f5f5f5',
+    desc:'正直にありのままお答えください。良い・悪いの判断はありません。',
+    max:null, reverse:true,
+    questions:[
+      '仕事でミスをしても、まず言い訳を考えてしまう方だ',
+      '前の職場の不満やグチを、周りに話してしまうことがある',
+    ]
+  },
+];
+
+const SCALE_LABELS = ['全くそう思わない','あまりそう思わない','どちらでもない','ややそう思う','非常にそう思う'];
+
+let answers = {};
+let respondentName = '';
+let respondentJob = '';
+let respondentDate = '';
+let currentSection = 0;
+
+function startTest() {
+  const name = document.getElementById('input-name').value.trim();
+  const job = document.getElementById('input-job').value;
+  if (!name || !job) { alert('お名前と応募職種を入力してください。'); return; }
+  respondentName = name;
+  respondentJob = job;
+  respondentDate = document.getElementById('input-date').value || new Date().toISOString().slice(0,10);
+  document.getElementById('screen-start').classList.add('hidden');
+  currentSection = 0;
+  renderSection(0);
+  document.getElementById('screen-test').classList.remove('hidden');
+  updateProgress();
+  window.scrollTo(0,0);
+}
+
+function renderSection(idx) {
+  const sec = SECTIONS[idx];
+  const totalSections = SECTIONS.length;
+  let qNum = 0;
+  for (let i=0; i<idx; i++) qNum += SECTIONS[i].questions.length;
+
+  let html = `<div class="card fade-in">
+    <div class="section-header">
+      <div class="section-badge" style="background:${sec.color}">${sec.id}</div>
+      <div class="section-info">
+        <div class="section-name" style="color:${sec.color}">${sec.label}</div>
+        <div class="section-desc">${sec.desc}</div>
+        <div class="section-progress">セクション ${idx+1} / ${totalSections}</div>
+      </div>
+    </div>`;
+
+  sec.questions.forEach((q, i) => {
+    const qId = `${sec.id}_${i}`;
+    const absNum = qNum + i + 1;
+    html += `<div class="question-block">`;
+    if (i > 0) html += `<div class="q-divider"></div>`;
+    if (sec.reverse) html += `<div class="reverse-badge">⚠ 自己点検</div>`;
+    html += `<div class="question-num">Q${absNum}</div>
+      <div class="question-text">${q}</div>
+      <div class="scale-row" style="--active-color:${sec.bg};--active-text:${sec.color}">`;
+    for (let v=1; v<=5; v++) {
+      const checked = answers[qId] === v ? 'checked' : '';
+      html += `<label class="scale-option">
+        <input type="radio" name="${qId}" value="${v}" ${checked} onchange="recordAnswer('${qId}',${v})">
+        <div class="scale-label">
+          <span class="scale-num">${v}</span>
+          <span class="scale-text">${SCALE_LABELS[v-1].replace('そう思わない','').replace('そう思う','').replace('どちらでもない','どちらとも')}</span>
+        </div>
+      </label>`;
+    }
+    html += `</div></div>`;
+  });
+
+  const isLast = idx === SECTIONS.length - 1;
+  html += `<div class="nav-row">
+    ${idx > 0 ? `<button class="btn btn-secondary" onclick="goSection(${idx-1})">← 前のセクション</button>` : `<div></div>`}
+    <span class="unanswered-msg" id="unanswered-msg"></span>
+    ${isLast
+      ? `<button class="btn btn-primary" onclick="submitTest()">結果を見る →</button>`
+      : `<button class="btn btn-primary" onclick="goSection(${idx+1})">次のセクション →</button>`
+    }
+  </div></div>`;
+
+  const el = document.getElementById('screen-test');
+  el.innerHTML = html;
+}
+
+function recordAnswer(qId, val) {
+  answers[qId] = val;
+  updateProgress();
+}
+
+function goSection(idx) {
+  const sec = SECTIONS[currentSection];
+  if (idx > currentSection) {
+    const unanswered = sec.questions.filter((_,i) => answers[`${sec.id}_${i}`] == null);
+    if (unanswered.length > 0) {
+      document.getElementById('unanswered-msg').textContent = `⚠ ${unanswered.length}問未回答があります`;
+      return;
+    }
+  }
+  currentSection = idx;
+  renderSection(idx);
+  window.scrollTo(0,0);
+}
+
+function submitTest() {
+  const allAnswered = SECTIONS.every(sec =>
+    sec.questions.every((_,i) => answers[`${sec.id}_${i}`] != null)
+  );
+  if (!allAnswered) {
+    const sec = SECTIONS[currentSection];
+    document.getElementById('unanswered-msg').textContent = '⚠ 未回答の設問があります';
+    return;
+  }
+  showResults();
+}
+
+function updateProgress() {
+  const total = SECTIONS.reduce((s,sec)=>s+sec.questions.length,0);
+  const answered = Object.keys(answers).length;
+  document.getElementById('progress-label').textContent = `${answered} / ${total} 問`;
+  document.getElementById('progress-bar').style.width = `${(answered/total)*100}%`;
+}
+
+function calcScores() {
+  const scores = {};
+  SECTIONS.forEach(sec => {
+    scores[sec.id] = sec.questions.reduce((s,_,i) => s + (answers[`${sec.id}_${i}`]||0), 0);
+  });
+  const total = scores.A + scores.B + scores.C + scores.D + scores.E;
+  return { ...scores, total };
+}
+
+function getGrade(total) {
+  if (total >= 126) return { grade:'S', label:'S判定', color:'#1565C0', bg:'#E3F2FD', msg:'非常に適性が高い。即戦力候補として積極的に採用を検討してください。' };
+  if (total >= 112) return { grade:'A', label:'A判定', color:'#2E7D32', bg:'#E8F5E9', msg:'適性が高く、基本的には採用推奨です。面接で懸念点を確認後に判断してください。' };
+  if (total >= 98)  return { grade:'B', label:'B判定', color:'#E65100', bg:'#FFF3E0', msg:'一部懸念があります。低スコアのカテゴリを面接で必ず深掘りしてください。' };
+  if (total >= 84)  return { grade:'C', label:'C判定', color:'#C62828', bg:'#FFEBEE', msg:'リスクがあります。低スコアのカテゴリを重点的に確認し、複数名で合議してください。' };
+  return { grade:'D', label:'D判定', color:'#B71C1C', bg:'#FFEBEE', msg:'適性が低い可能性があります。原則として採用見送りを検討してください。' };
+}
+
+function getCatWarn(sec, score) {
+  const warns = { A:18, B:18, C:18, D:21, E:12 };
+  return sec.max && score <= warns[sec.id];
+}
+
+function showResults() {
+  document.getElementById('screen-test').classList.add('hidden');
+  const s = calcScores();
+  const g = getGrade(s.total);
+  const dateStr = respondentDate.replace(/-/g, '/');
+
+  const warnSections = SECTIONS.filter(sec => sec.id !== 'R' && getCatWarn(sec, s[sec.id]));
+  const reverseWarn = [];
+  if (s.R >= 8) reverseWarn.push(`Q29・Q30（合計 ${s.R}点）：悪口・責任転嫁の傾向に注意`);
+  else {
+    const r29 = answers['R_0'] || 0;
+    const r30 = answers['R_1'] || 0;
+    if (r29 >= 4) reverseWarn.push(`Q29（${r29}点）：ミスを認めない・言い訳をする傾向の可能性`);
+    if (r30 >= 4) reverseWarn.push(`Q30（${r30}点）：前職への悪口・陰口を言う傾向の可能性`);
+  }
+
+  let html = `<div class="card fade-in">
+    <div class="result-header">
+      <div class="result-name">${respondentName} 様　／　${respondentJob}</div>
+      <div class="result-date">記入日：${dateStr}</div>
+      <div class="result-total">
+        <span class="total-score">${s.total}</span><span class="total-max"> / 140</span>
+        <div class="total-label">総合得点（A〜Eカテゴリ合計）</div>
+      </div>
+      <div class="grade-badge" style="background:${g.bg};color:${g.color}">${g.label}</div>
+      <div style="font-size:14px;color:#666;max-width:480px;margin:8px auto 0;">${g.msg}</div>
+    </div>`;
+
+  html += `<h3 style="font-size:15px;font-weight:700;color:var(--blue-dark);margin-bottom:14px;">カテゴリ別スコア</h3>
+    <div class="cat-scores">`;
+  SECTIONS.filter(s=>s.id!=='R').forEach(sec => {
+    const score = s[sec.id];
+    const pct = Math.round((score/sec.max)*100);
+    const warn = getCatWarn(sec, score);
+    html += `<div class="cat-card">
+      ${warn ? '<div class="cat-card-warn"></div>' : ''}
+      <div class="cat-card-label" style="color:${sec.color}">${sec.id}：${sec.label.split('・')[0]}</div>
+      <div class="cat-card-score" style="color:${sec.color}">${score}</div>
+      <div class="cat-card-max">/ ${sec.max}点</div>
+      <div class="cat-card-bar"><div class="cat-card-fill" style="width:${pct}%;background:${sec.color}"></div></div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  if (reverseWarn.length > 0) {
+    html += `<div class="reverse-result">
+      <div class="reverse-title">⚠ 自己点検（逆転項目）注意サイン</div>
+      <div class="reverse-items">${reverseWarn.map(w=>`・${w}`).join('<br>')}</div>
+    </div>`;
+  }
+
+  if (warnSections.length > 0) {
+    html += `<div class="alert-box alert-warn"><strong>⚠ 要深掘りカテゴリ：</strong><br>`;
+    const followUps = {
+      A:'「ミスをしたときどう対応しますか？」',
+      B:'「チームで意見が対立したときどうしますか？」',
+      C:'「忙しいときに優先順位をどうつけますか？」',
+      D:'「ミスをしたとき、上司への報告についてどう考えますか？」',
+      E:'「この仕事で大切にしていることは何ですか？」',
+    };
+    warnSections.forEach(sec => {
+      html += `・<strong>${sec.label}</strong>（${s[sec.id]}点）→ 面接で確認：${followUps[sec.id]}<br>`;
+    });
+    html += `</div>`;
+  } else {
+    html += `<div class="alert-box alert-ok">全カテゴリが警戒ライン以上です。テスト結果は良好です。面接での確認事項を参照してください。</div>`;
+  }
+
+  html += `<h3 style="font-size:15px;font-weight:700;color:var(--blue-dark);margin:20px 0 12px;">判定基準表</h3>
+    <table class="result-table">
+      <tr><th>判定</th><th>得点範囲</th><th>意味</th><th>対応</th></tr>
+      <tr><td class="grade-s">S判定</td><td>126〜140点</td><td>非常に適性が高い</td><td>積極的に採用検討</td></tr>
+      <tr><td class="grade-a">A判定</td><td>112〜125点</td><td>適性が高い</td><td>面接で懸念確認後に判断</td></tr>
+      <tr><td class="grade-b">B判定</td><td>98〜111点</td><td>一部懸念あり</td><td>低スコア項目を深掘り</td></tr>
+      <tr><td class="grade-c">C判定</td><td>84〜97点</td><td>リスクあり</td><td>慎重に判断・複数名で合議</td></tr>
+      <tr><td class="grade-d">D判定</td><td>83点以下</td><td>適性が低い可能性</td><td>原則として採用見送りを検討</td></tr>
+    </table>`;
+
+  const r29 = answers['R_0']||0, r30 = answers['R_1']||0;
+  html += `<div style="margin-top:20px;font-size:13px;color:#888;background:#fafafa;border-radius:8px;padding:12px 16px;line-height:1.8;">
+    <strong style="color:#555">【面接官メモ】</strong><br>
+    逆転項目 Q29：${r29}点　Q30：${r30}点${r29>=4||r30>=4?' ⚠ 面接で必ず深掘りしてください':''}<br>
+    最終判定：${g.label}　（合計 ${s.total} / 140点）
+  </div>`;
+
+  html += `<div class="nav-row">
+    <button class="btn btn-secondary" onclick="resetTest()">← もう一度回答する</button>
+    <button class="btn print-btn" onclick="window.print()">🖨 印刷する</button>
+  </div></div>`;
+
+  const el = document.getElementById('screen-result');
+  el.innerHTML = html;
+  el.classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+function resetTest() {
+  answers = {};
+  document.getElementById('screen-result').classList.add('hidden');
+  document.getElementById('screen-start').classList.remove('hidden');
+  document.getElementById('input-name').value = '';
+  document.getElementById('input-job').value = '';
+  updateProgress();
+  window.scrollTo(0,0);
+}
+
+// Set today's date as default
+document.getElementById('input-date').value = new Date().toISOString().slice(0,10);
+</script>
+
+</body>
+</html>
