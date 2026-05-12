@@ -9,10 +9,8 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --blue-dark: #1B4F7A; --blue-mid: #2E75B6; --blue-light: #D5E8F4; --blue-pale: #EBF3FB;
-    --green: #1E5E3A; --green-light: #E8F5E9; --red: #B71C1C; --red-light: #FFEBEE;
-    --orange: #E65100; --orange-light: #FFF3E0;
+    --green: #1E5E3A; --green-light: #E8F5E9;
     --gray: #444; --gray-light: #f5f5f5; --gray-border: #ddd; --white: #fff;
-    --cat-a: #2E75B6; --cat-b: #7030A0; --cat-c: #E65100; --cat-d: #1E5E3A; --cat-e: #B71C1C;
     --shadow: 0 2px 12px rgba(0,0,0,0.08); --radius: 12px;
   }
   body { font-family: 'Noto Sans JP', sans-serif; background: #f0f4f8; color: var(--gray); min-height: 100vh; font-size: 15px; line-height: 1.7; }
@@ -56,7 +54,7 @@
   .scale-label { width: 100%; padding: 12px 4px; display: flex; flex-direction: column; align-items: center; gap: 4px; transition: background 0.15s; border-right: 1px solid var(--gray-border); text-align: center; }
   .scale-option:last-child .scale-label { border-right: none; }
   .scale-num { font-size: 18px; font-weight: 700; color: #bbb; transition: color 0.15s; }
-  .scale-text { font-size: 10px; color: #bbb; line-height: 1.3; transition: color 0.15s; }
+  .scale-text { font-size: 10px; color: #bbb; line-height: 1.3; }
   .scale-option input:checked + .scale-label { background: var(--active-color, var(--blue-pale)); }
   .scale-option input:checked + .scale-label .scale-num { color: var(--active-text, var(--blue-dark)); font-weight: 900; }
   .scale-option input:checked + .scale-label .scale-text { color: var(--active-text, var(--blue-mid)); }
@@ -70,51 +68,32 @@
   .btn-secondary { background: var(--white); color: var(--gray); border: 1.5px solid var(--gray-border); }
   .btn-secondary:hover { background: var(--gray-light); }
   .btn-large { padding: 16px 48px; font-size: 16px; border-radius: 10px; }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
   .unanswered-msg { font-size: 12px; color: #e53935; font-weight: 700; }
-  .result-header { text-align: center; padding: 40px 36px 32px; border-bottom: 1px solid #f0f0f0; margin-bottom: 28px; }
-  .result-name { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
-  .result-date { font-size: 13px; color: #aaa; }
-  .result-total { margin: 20px 0; }
-  .total-score { font-size: 56px; font-weight: 700; color: var(--blue-dark); line-height: 1; }
-  .total-max { font-size: 18px; color: #aaa; }
-  .total-label { font-size: 13px; color: #888; margin-top: 4px; }
-  .grade-badge { display: inline-block; padding: 8px 32px; border-radius: 100px; font-size: 28px; font-weight: 700; margin: 12px 0; }
-  .cat-scores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
-  .cat-card { background: var(--gray-light); border-radius: 10px; padding: 16px 12px; text-align: center; position: relative; }
-  .cat-card-label { font-size: 11px; font-weight: 700; color: #888; margin-bottom: 4px; }
-  .cat-card-score { font-size: 28px; font-weight: 700; line-height: 1; }
-  .cat-card-max { font-size: 12px; color: #aaa; }
-  .cat-card-bar { height: 4px; border-radius: 2px; margin-top: 8px; background: #e0e0e0; overflow: hidden; }
-  .cat-card-fill { height: 100%; border-radius: 2px; transition: width 0.8s ease; }
-  .cat-card-warn { position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background: #f44336; border-radius: 50%; }
-  .reverse-result { background: #FFF9C4; border: 1.5px solid #F9A825; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
-  .reverse-title { font-weight: 700; font-size: 14px; color: #6D4C41; margin-bottom: 8px; }
-  .reverse-items { font-size: 13px; color: #795548; line-height: 1.8; }
-  .result-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  .result-table th { background: var(--blue-dark); color: #fff; padding: 10px 14px; text-align: left; font-weight: 700; }
-  .result-table td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
-  .result-table tr:nth-child(even) td { background: var(--gray-light); }
-  .grade-s { color: #1565C0; font-weight: 700; } .grade-a { color: #2E7D32; font-weight: 700; }
-  .grade-b { color: #E65100; font-weight: 700; } .grade-c { color: #C62828; font-weight: 700; }
-  .grade-d { color: #B71C1C; font-weight: 700; }
-  .alert-box { border-radius: 8px; padding: 14px 18px; font-size: 14px; margin-bottom: 12px; line-height: 1.7; }
-  .alert-warn { background: #FFF3E0; border-left: 4px solid var(--orange); color: var(--orange); }
-  .alert-ok { background: var(--green-light); border-left: 4px solid var(--green); color: var(--green); }
-  .sending-overlay { position: fixed; inset: 0; background: rgba(27,79,122,0.85); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; color: #fff; gap: 16px; }
-  .spinner { width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  .sending-overlay { position: fixed; inset: 0; background: rgba(27,79,122,0.88); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; color: #fff; gap: 16px; }
+  .spinner { width: 52px; height: 52px; border: 4px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .sending-text { font-size: 16px; font-weight: 700; }
+  .sending-text { font-size: 17px; font-weight: 700; }
   .sending-sub { font-size: 13px; color: rgba(255,255,255,0.75); }
-  .send-success { background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; color: #1E5E3A; font-size: 14px; line-height: 1.8; }
-  .send-error { background: #FFEBEE; border: 1.5px solid #C62828; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; color: #B71C1C; font-size: 14px; }
-  .print-btn { background: #455A64; color: #fff; }
-  .print-btn:hover { background: #37474F; }
-  @media print { body { background: white; } .site-header { position: static; } .btn { display: none; } .sending-overlay { display: none; } }
-  @media (max-width: 600px) { .main { padding: 16px 14px 60px; } .card { padding: 20px 18px; } .cat-scores { grid-template-columns: repeat(2, 1fr); } .form-grid { grid-template-columns: 1fr; } .header-inner { flex-direction: column; gap: 8px; align-items: flex-start; } .progress-bar-bg { width: 120px; } }
+
+  /* ── 完了画面 ── */
+  .thankyou-screen { text-align: center; padding: 56px 36px; }
+  .thankyou-icon { font-size: 72px; margin-bottom: 24px; }
+  .thankyou-title { font-family: 'Noto Serif JP', serif; font-size: 26px; color: var(--blue-dark); margin-bottom: 16px; }
+  .thankyou-msg { font-size: 15px; color: #555; line-height: 2; margin-bottom: 32px; }
+  .thankyou-box { background: var(--blue-pale); border-radius: 12px; padding: 22px 28px; margin: 0 auto 32px; max-width: 480px; text-align: left; font-size: 14px; color: var(--blue-dark); line-height: 1.9; }
+  .thankyou-box-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .thankyou-steps { list-style: none; padding: 0; }
+  .thankyou-steps li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 14px; color: #444; }
+  .step-num { flex-shrink: 0; width: 22px; height: 22px; background: var(--blue-dark); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-top: 2px; }
+
+  /* ── エラー画面 ── */
+  .error-screen { text-align: center; padding: 48px 36px; }
+  .error-box { background: #FFF3E0; border: 1.5px solid #E65100; border-radius: 10px; padding: 20px 24px; margin: 0 auto 28px; max-width: 480px; font-size: 14px; color: #E65100; line-height: 1.8; }
+
+  @media (max-width: 600px) { .main { padding: 16px 14px 60px; } .card { padding: 20px 18px; } .form-grid { grid-template-columns: 1fr; } .header-inner { flex-direction: column; gap: 8px; align-items: flex-start; } .progress-bar-bg { width: 120px; } .start-meta { gap: 16px; } }
   .hidden { display: none !important; }
-  .fade-in { animation: fadeIn 0.35s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
@@ -133,6 +112,8 @@
 </header>
 
 <main class="main">
+
+  <!-- ── スタート画面 ── -->
   <div id="screen-start" class="card start-screen fade-in">
     <div class="start-icon">📋</div>
     <div class="start-title">採用適性テスト</div>
@@ -148,7 +129,7 @@
       1 ＝ 全くそう思わない　／　2 ＝ あまりそう思わない　／　3 ＝ どちらでもない<br>
       4 ＝ ややそう思う　／　5 ＝ 非常にそう思う
     </div>
-    <div style="max-width:480px;margin:0 auto 24px;">
+    <div style="max-width:480px;margin:0 auto 28px;">
       <div class="form-grid">
         <div class="form-row">
           <label>お名前 <span style="color:#e53935">*</span></label>
@@ -173,8 +154,42 @@
     <button class="btn btn-primary btn-large" onclick="startTest()">テストを開始する →</button>
   </div>
 
+  <!-- ── 設問画面 ── -->
   <div id="screen-test" class="hidden"></div>
-  <div id="screen-result" class="hidden"></div>
+
+  <!-- ── 完了画面（受験者向け・結果は表示しない） ── -->
+  <div id="screen-thankyou" class="hidden">
+    <div class="card thankyou-screen fade-in">
+      <div class="thankyou-icon">✅</div>
+      <div class="thankyou-title">ご回答ありがとうございました</div>
+      <div class="thankyou-msg">
+        テストへのご回答が正常に送信されました。<br>
+        このページは閉じていただいて構いません。
+      </div>
+      <div class="thankyou-box">
+        <div class="thankyou-box-title">📌 この後の流れ</div>
+        <ul class="thankyou-steps">
+          <li><div class="step-num">1</div><div>担当者が内容を確認いたします。</div></li>
+          <li><div class="step-num">2</div><div>面接の日程等について、別途ご連絡いたします。</div></li>
+          <li><div class="step-num">3</div><div>ご不明な点がございましたら、受付担当者までお声がけください。</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── エラー画面 ── -->
+  <div id="screen-error" class="hidden">
+    <div class="card error-screen fade-in">
+      <div style="font-size:48px;margin-bottom:16px;">⚠️</div>
+      <div style="font-size:20px;font-weight:700;color:#E65100;margin-bottom:16px;">送信に失敗しました</div>
+      <div class="error-box">
+        通信エラーが発生しました。<br>
+        もう一度お試しいただくか、受付担当者にその旨をお伝えください。
+      </div>
+      <button class="btn btn-primary" onclick="retrySubmit()">もう一度送信する</button>
+    </div>
+  </div>
+
 </main>
 
 <script>
@@ -239,10 +254,18 @@ const SECTIONS = [
     ]},
 ];
 
-const SCALE_LABELS = ['全くそう思わない','あまりそう思わない','どちらでもない','ややそう思う','非常にそう思う'];
-const SCALE_SHORT  = ['全く','あまり','どちらとも','やや','非常に'];
+const SCALE_SHORT = ['全く','あまり','どちらとも','やや','非常に'];
+const WARN_LINE   = { A:18, B:18, C:18, D:21, E:12 };
+const FOLLOWUP    = {
+  A:'「ミスをしたときどう対応しますか？」',
+  B:'「チームで意見が対立したときどうしますか？」',
+  C:'「忙しいときに優先順位をどうつけますか？」',
+  D:'「ミスをしたとき上司への報告についてどう考えますか？」',
+  E:'「この仕事で大切にしていることは何ですか？」',
+};
 
-let answers = {}, respondentName = '', respondentJob = '', respondentDate = '', currentSection = 0;
+let answers = {}, respondentName = '', respondentJob = '', respondentDate = '';
+let currentSection = 0, lastPayload = null;
 
 function startTest() {
   const name = document.getElementById('input-name').value.trim();
@@ -295,7 +318,7 @@ function renderSection(idx) {
     ${idx > 0 ? `<button class="btn btn-secondary" onclick="goSection(${idx-1})">← 前へ</button>` : `<div></div>`}
     <span class="unanswered-msg" id="unanswered-msg"></span>
     ${isLast
-      ? `<button class="btn btn-primary" onclick="submitTest()">結果を送信する →</button>`
+      ? `<button class="btn btn-primary" onclick="submitTest()">送信する →</button>`
       : `<button class="btn btn-primary" onclick="goSection(${idx+1})">次のセクション →</button>`
     }
   </div></div>`;
@@ -320,7 +343,7 @@ function submitTest() {
 }
 
 function updateProgress() {
-  const total = SECTIONS.reduce((s,sec)=>s+sec.questions.length,0);
+  const total = SECTIONS.reduce((s,sec)=>s+sec.questions.length, 0);
   const answered = Object.keys(answers).length;
   document.getElementById('progress-label').textContent = `${answered} / ${total} 問`;
   document.getElementById('progress-bar').style.width = `${(answered/total)*100}%`;
@@ -328,157 +351,81 @@ function updateProgress() {
 
 function calcScores() {
   const s = {};
-  SECTIONS.forEach(sec => { s[sec.id] = sec.questions.reduce((sum,_,i) => sum + (answers[`${sec.id}_${i}`]||0), 0); });
+  SECTIONS.forEach(sec => { s[sec.id] = sec.questions.reduce((sum,_,i) => sum+(answers[`${sec.id}_${i}`]||0), 0); });
   s.total = s.A + s.B + s.C + s.D + s.E;
   return s;
 }
 
 function getGrade(total) {
-  if (total >= 126) return { grade:'S判定', color:'#1565C0', bg:'#E3F2FD', msg:'非常に適性が高い。即戦力候補として積極的に採用を検討してください。' };
-  if (total >= 112) return { grade:'A判定', color:'#2E7D32', bg:'#E8F5E9', msg:'適性が高く、基本的には採用推奨です。面接で懸念点を確認後に判断してください。' };
-  if (total >= 98)  return { grade:'B判定', color:'#E65100', bg:'#FFF3E0', msg:'一部懸念があります。低スコアのカテゴリを面接で必ず深掘りしてください。' };
-  if (total >= 84)  return { grade:'C判定', color:'#C62828', bg:'#FFEBEE', msg:'リスクがあります。低スコアのカテゴリを重点的に確認し、複数名で合議してください。' };
-  return { grade:'D判定', color:'#B71C1C', bg:'#FFEBEE', msg:'適性が低い可能性があります。原則として採用見送りを検討してください。' };
+  if (total >= 126) return 'S判定';
+  if (total >= 112) return 'A判定';
+  if (total >= 98)  return 'B判定';
+  if (total >= 84)  return 'C判定';
+  return 'D判定';
 }
-
-const WARN_LINE = { A:18, B:18, C:18, D:21, E:12 };
-const FOLLOWUP  = { A:'「ミスをしたときどう対応しますか？」', B:'「チームで意見が対立したときどうしますか？」', C:'「忙しいときに優先順位をどうつけますか？」', D:'「ミスをしたとき上司への報告についてどう考えますか？」', E:'「この仕事で大切にしていることは何ですか？」' };
 
 function sendResults() {
   const s = calcScores();
-  const g = getGrade(s.total);
+  const grade = getGrade(s.total);
   const warnSecs  = SECTIONS.filter(sec => sec.id !== 'R' && s[sec.id] <= WARN_LINE[sec.id]);
   const warnCats  = warnSecs.map(sec => `${sec.id}:${sec.label.split('・')[0]}(${s[sec.id]}点)`).join('、') || '';
   const r29 = answers['R_0']||0, r30 = answers['R_1']||0;
   const revWarns = [];
   if (r29 >= 4) revWarns.push(`Q29(${r29}点):言い訳傾向の可能性`);
   if (r30 >= 4) revWarns.push(`Q30(${r30}点):悪口・陰口傾向の可能性`);
-  const reverseWarn = revWarns.join('、') || '';
+  const reverseWarn  = revWarns.join('、') || '';
+  const followupList = warnSecs.map(sec => `${sec.label}→${FOLLOWUP[sec.id]}`).join(' / ') || 'なし';
 
-  const payload = {
-    name: respondentName, job: respondentJob,
+  lastPayload = {
+    name: respondentName, job: respondentJob, date: respondentDate,
     scoreA: s.A, scoreB: s.B, scoreC: s.C, scoreD: s.D, scoreE: s.E,
-    r29, r30, total: s.total, grade: g.grade,
-    warnCats, reverseWarn, sheetId: SHEET_ID
+    r29, r30, total: s.total, grade,
+    warnCats, reverseWarn, followupList,
+    sheetId: SHEET_ID
   };
 
-  // ローディング表示
   const overlay = document.createElement('div');
   overlay.className = 'sending-overlay';
-  overlay.innerHTML = `<div class="spinner"></div><div class="sending-text">結果を送信中...</div><div class="sending-sub">スプレッドシートに記録しています</div>`;
+  overlay.id = 'sending-overlay';
+  overlay.innerHTML = `<div class="spinner"></div><div class="sending-text">送信中...</div><div class="sending-sub">回答を記録しています。しばらくお待ちください。</div>`;
   document.body.appendChild(overlay);
 
   fetch(GAS_URL, {
-    method: 'POST',
-    mode: 'no-cors',
+    method: 'POST', mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(lastPayload)
   })
-  .then(() => {
-    document.body.removeChild(overlay);
-    showResults(s, g, warnSecs, r29, r30, reverseWarn, true);
-  })
-  .catch(() => {
-    document.body.removeChild(overlay);
-    showResults(s, g, warnSecs, r29, r30, reverseWarn, false);
-  });
+  .then(() => { removeOverlay(); showThankYou(); })
+  .catch(() => { removeOverlay(); showError(); });
 }
 
-function showResults(s, g, warnSecs, r29, r30, reverseWarn, sendOk) {
+function retrySubmit() {
+  document.getElementById('screen-error').classList.add('hidden');
+  if (!lastPayload) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'sending-overlay'; overlay.id = 'sending-overlay';
+  overlay.innerHTML = `<div class="spinner"></div><div class="sending-text">再送信中...</div><div class="sending-sub">もう少しお待ちください。</div>`;
+  document.body.appendChild(overlay);
+  fetch(GAS_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(lastPayload) })
+  .then(() => { removeOverlay(); showThankYou(); })
+  .catch(() => { removeOverlay(); showError(); });
+}
+
+function removeOverlay() { const o = document.getElementById('sending-overlay'); if (o) document.body.removeChild(o); }
+
+// 受験者には結果を見せない・完了メッセージのみ表示
+function showThankYou() {
   document.getElementById('screen-test').classList.add('hidden');
-  const dateStr = respondentDate.replace(/-/g,'/');
-
-  const revWarns = [];
-  if (r29 >= 4) revWarns.push(`Q29（${r29}点）：ミスを認めない・言い訳をする傾向の可能性`);
-  if (r30 >= 4) revWarns.push(`Q30（${r30}点）：前職への悪口・陰口を言う傾向の可能性`);
-
-  let html = `<div class="card fade-in">
-    <div class="result-header">
-      <div class="result-name">${respondentName} 様　／　${respondentJob}</div>
-      <div class="result-date">記入日：${dateStr}</div>
-      <div class="result-total">
-        <span class="total-score">${s.total}</span><span class="total-max"> / 140</span>
-        <div class="total-label">総合得点（A〜Eカテゴリ合計）</div>
-      </div>
-      <div class="grade-badge" style="background:${g.bg};color:${g.color}">${g.grade}</div>
-      <div style="font-size:14px;color:#666;max-width:480px;margin:8px auto 0;">${g.msg}</div>
-    </div>`;
-
-  // 送信ステータス
-  if (sendOk) {
-    html += `<div class="send-success">✅ <strong>送信完了！</strong><br>結果がGoogleスプレッドシートに記録され、面接官にメールで通知されました。</div>`;
-  } else {
-    html += `<div class="send-error">⚠ 送信に失敗しました。この画面を印刷して手動でご提出ください。</div>`;
-  }
-
-  // カテゴリ別スコア
-  html += `<h3 style="font-size:15px;font-weight:700;color:var(--blue-dark);margin-bottom:14px;">カテゴリ別スコア</h3>
-    <div class="cat-scores">`;
-  SECTIONS.filter(sec=>sec.id!=='R').forEach(sec => {
-    const score = s[sec.id];
-    const pct   = Math.round((score/sec.max)*100);
-    const warn  = score <= WARN_LINE[sec.id];
-    html += `<div class="cat-card">
-      ${warn ? '<div class="cat-card-warn"></div>' : ''}
-      <div class="cat-card-label" style="color:${sec.color}">${sec.id}：${sec.label.split('・')[0]}</div>
-      <div class="cat-card-score" style="color:${sec.color}">${score}</div>
-      <div class="cat-card-max">/ ${sec.max}点</div>
-      <div class="cat-card-bar"><div class="cat-card-fill" style="width:${pct}%;background:${sec.color}"></div></div>
-    </div>`;
-  });
-  html += `</div>`;
-
-  // 逆転項目警告
-  if (revWarns.length > 0) {
-    html += `<div class="reverse-result">
-      <div class="reverse-title">⚠ 自己点検（逆転項目）注意サイン</div>
-      <div class="reverse-items">${revWarns.map(w=>`・${w}`).join('<br>')}</div>
-    </div>`;
-  }
-
-  // 警戒カテゴリ
-  if (warnSecs.length > 0) {
-    html += `<div class="alert-box alert-warn"><strong>⚠ 要深掘りカテゴリ：</strong><br>`;
-    warnSecs.forEach(sec => { html += `・<strong>${sec.label}</strong>（${s[sec.id]}点）→ 面接確認：${FOLLOWUP[sec.id]}<br>`; });
-    html += `</div>`;
-  } else {
-    html += `<div class="alert-box" style="background:#E8F5E9;border-left:4px solid #1E5E3A;color:#1E5E3A;">✅ 全カテゴリが警戒ライン以上です。テスト結果は良好です。</div>`;
-  }
-
-  // 判定表
-  html += `<h3 style="font-size:15px;font-weight:700;color:var(--blue-dark);margin:20px 0 12px;">判定基準表</h3>
-    <table class="result-table">
-      <tr><th>判定</th><th>得点範囲</th><th>意味</th><th>対応</th></tr>
-      <tr><td class="grade-s">S判定</td><td>126〜140点</td><td>非常に適性が高い</td><td>積極的に採用検討</td></tr>
-      <tr><td class="grade-a">A判定</td><td>112〜125点</td><td>適性が高い</td><td>面接で懸念確認後に判断</td></tr>
-      <tr><td class="grade-b">B判定</td><td>98〜111点</td><td>一部懸念あり</td><td>低スコア項目を深掘り</td></tr>
-      <tr><td class="grade-c">C判定</td><td>84〜97点</td><td>リスクあり</td><td>慎重に判断・複数名で合議</td></tr>
-      <tr><td class="grade-d">D判定</td><td>83点以下</td><td>適性が低い可能性</td><td>原則として採用見送りを検討</td></tr>
-    </table>`;
-
-  html += `<div style="margin-top:20px;font-size:13px;color:#888;background:#fafafa;border-radius:8px;padding:12px 16px;line-height:1.8;">
-    <strong style="color:#555">【面接官メモ】</strong><br>
-    逆転項目 Q29：${r29}点　Q30：${r30}点${r29>=4||r30>=4?' ⚠ 面接で必ず深掘りしてください':''}<br>
-    最終判定：${g.grade}　（合計 ${s.total} / 140点）
-  </div>`;
-
-  html += `<div class="nav-row">
-    <button class="btn btn-secondary" onclick="resetTest()">← もう一度回答する</button>
-    <button class="btn print-btn" onclick="window.print()">🖨 印刷する</button>
-  </div></div>`;
-
-  const el = document.getElementById('screen-result');
-  el.innerHTML = html; el.classList.remove('hidden');
+  document.getElementById('screen-thankyou').classList.remove('hidden');
+  document.getElementById('progress-label').textContent = '完了';
+  document.getElementById('progress-bar').style.width = '100%';
   window.scrollTo(0,0);
 }
 
-function resetTest() {
-  answers = {};
-  document.getElementById('screen-result').classList.add('hidden');
-  document.getElementById('screen-start').classList.remove('hidden');
-  document.getElementById('input-name').value = '';
-  document.getElementById('input-job').value = '';
-  updateProgress(); window.scrollTo(0,0);
+function showError() {
+  document.getElementById('screen-test').classList.add('hidden');
+  document.getElementById('screen-error').classList.remove('hidden');
+  window.scrollTo(0,0);
 }
 
 document.getElementById('input-date').value = new Date().toISOString().slice(0,10);
